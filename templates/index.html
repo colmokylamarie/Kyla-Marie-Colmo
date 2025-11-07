@@ -4,30 +4,101 @@
     <meta charset="UTF-8">
     <title>Student Management System</title>
     <style>
-        body { font-family: Arial; margin: 40px; }
-        h1 { color: #2c3e50; }
-        form { margin-bottom: 20px; }
-        input, button { padding: 8px; margin: 5px; }
-        table { border-collapse: collapse; width: 60%; }
-        th, td { border: 1px solid #ccc; padding: 10px; }
-        th { background-color: #f4f4f4; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-container input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #27ae60;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 768px) {
+            table, .form-container {
+                width: 95%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>Student Management System</h1>
 
-    <form id="studentForm">
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="number" id="grade" placeholder="Grade" required>
-        <input type="text" id="section" placeholder="Section" required>
-        <button type="submit">Add Student</button>
-    </form>
+    <div class="form-container">
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Student Name" required>
+            <input type="number" id="year" placeholder="Year Level" required>
+            <input type="text" id="section" placeholder="Section" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
 
     <table id="studentTable">
         <thead>
             <tr>
-                <th>ID</th><th>Name</th><th>Grade</th><th>Section</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Section</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -46,7 +117,7 @@
                         const row = `<tr>
                             <td>${student.id}</td>
                             <td>${student.name}</td>
-                            <td>${student.grade}</td>
+                            <td>${student.year}</td>
                             <td>${student.section}</td>
                         </tr>`;
                         tableBody.innerHTML += row;
@@ -58,7 +129,7 @@
             e.preventDefault();
             const student = {
                 name: document.getElementById('name').value,
-                grade: parseInt(document.getElementById('grade').value),
+                year: parseInt(document.getElementById('year').value),
                 section: document.getElementById('section').value
             };
 
