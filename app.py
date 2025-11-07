@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 # In-memory student "database"
 students = [
-    {"id": 1, "name": "Alice", "grade": 10, "section": "Zechariah"},
-    {"id": 2, "name": "Bob", "grade": 11, "section": "Ezekiel"}
+    {"id": 1, "name": "Kyla Marie Colmo", "year": 3, "section": "Stallman"},
+    {"id": 2, "name": "Jona Pagunsan", "year": 2, "section": "Torvalds"}
 ]
 
 @app.route('/')
@@ -22,7 +22,7 @@ def add_student():
     new_student = {
         "id": len(students) + 1,
         "name": data.get("name"),
-        "grade": data.get("grade"),
+        "year": data.get("year"),
         "section": data.get("section")
     }
     students.append(new_student)
